@@ -312,7 +312,9 @@ public class App extends Application
 
         // Create the logout button and place it on the top right
         Button logoutButton = createButton("Logout", "logout");
-        logoutButton.setPrefSize(120, 50);
+        // logoutButton.setPrefSize(120, 50);
+        logoutButton.setMaxWidth(150);
+        logoutButton.setMaxHeight(80);
         applyHoverEffect(logoutButton);
         logoutButton.setOnAction(arg0 ->
         {
@@ -321,7 +323,7 @@ public class App extends Application
             showMainMenu(); // Show the main menu
         });
 
-        topContainer.getChildren().add(logoutButton); // Add the logout button to the top container
+        topContainer.getChildren().addAll(logoutButton); // Add the logout button to the top container
 
         VBox options = new VBox();
         options.setSpacing(50);
@@ -454,166 +456,185 @@ public class App extends Application
     }
 
     @SuppressWarnings("unchecked")
-private void showAllBooks(Stage primaryStage) {
-    root.getChildren().clear();
-    root.getStyleClass().add("borderpane-style");
-    scene.getStylesheets().clear();
-    scene.getStylesheets().add(getClass().getResource("/main_app/resources/css/searchbook.css").toExternalForm());
+    private void showAllBooks(Stage primaryStage)
+    {
+        root.getChildren().clear();
+        root.getStyleClass().add("borderpane-style");
+        scene.getStylesheets().clear();
+        scene.getStylesheets().add(getClass().getResource("/main_app/resources/css/searchbook.css").toExternalForm());
 
-    HBox topContainer = new HBox();
-    topContainer.setSpacing(20);
-    topContainer.setAlignment(Pos.TOP_RIGHT);
-    topContainer.setPadding(new Insets(10));
+        HBox topContainer = new HBox();
+        topContainer.setSpacing(20);
+        topContainer.setAlignment(Pos.TOP_RIGHT);
+        topContainer.setPadding(new Insets(10));
 
-    if (admin) {
-        Button logoutButton = new Button("Logout");
-        logoutButton.setPrefSize(120, 50);
-        applyHoverEffect(logoutButton);
-        logoutButton.setOnAction(arg0 -> {
-            user = null;
-            root.getChildren().clear();
-            showMainMenu();
-        });
+        if (admin)
+        {
+            Button logoutButton = new Button("Logout");
+            logoutButton.setPrefSize(120, 50);
+            applyHoverEffect(logoutButton);
+            logoutButton.setOnAction(arg0 ->
+            {
+                user = null;
+                root.getChildren().clear();
+                showMainMenu();
+            });
 
-        topContainer.getChildren().add(logoutButton);
-    } else {
-        Button back = createButton("Back", null);
-        applyHoverEffect(back);
-        back.setPrefSize(120, 50);
-        back.setOnAction(e -> showOptions(primaryStage));
-        topContainer.getChildren().add(back);
-    }
-
-    VBox searchBookContainer = new VBox();
-    searchBookContainer.setSpacing(10);
-    searchBookContainer.setAlignment(Pos.CENTER);
-    searchBookContainer.setPadding(new Insets(20));
-
-    TextField searchBookField = new TextField();
-    searchBookField.setPromptText("Enter book name");
-    searchBookField.setMaxWidth(1100);
-    searchBookField.setPrefHeight(60);
-    searchBookField.getStyleClass().add("text-field");
-
-    TableView<Book> searchBookTable = new TableView<>();
-    searchBookTable.getStyleClass().add("table-view");
-
-    TableColumn<Book, String> searchBookNameColumn = new TableColumn<>("Book Name");
-    searchBookNameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
-    searchBookNameColumn.setPrefWidth(350);
-
-    TableColumn<Book, String> searchAuthorNameColumn = new TableColumn<>("Author");
-    searchAuthorNameColumn.setCellValueFactory(new PropertyValueFactory<>("author"));
-    searchAuthorNameColumn.setPrefWidth(350);
-
-    TableColumn<Book, Integer> searchStockColumn = new TableColumn<>("Stock");
-    searchStockColumn.setCellValueFactory(new PropertyValueFactory<>("stock"));
-    searchStockColumn.setPrefWidth(100);
-
-    TableColumn<Book, String> searchCategoryColumn = new TableColumn<>("Book Category");
-    searchCategoryColumn.setCellValueFactory(new PropertyValueFactory<>("category"));
-    searchCategoryColumn.setPrefWidth(200);
-
-    TableColumn<Book, Double> searchPriceColumn = new TableColumn<>("Price");
-    searchPriceColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
-    searchPriceColumn.setPrefWidth(100);
-
-    searchBookTable.getColumns().addAll(searchBookNameColumn, searchAuthorNameColumn, searchCategoryColumn,
-            searchPriceColumn, searchStockColumn);
-
-    ObservableList<Book> bookList = FXCollections.observableArrayList();
-    ArrayList<String> books = FileManager.readFile(Constants.BOOKS_FILE_PATH);
-    for (String line : books) {
-        if (admin || !line.contains(",0,")) {
-            String[] bookDetails = line.split(",");
-            Book book = new Book(bookDetails[0], bookDetails[1], Double.parseDouble(bookDetails[2]),
-                    Integer.parseInt(bookDetails[3]), bookDetails[4]);
-            bookList.add(book);
+            topContainer.getChildren().add(logoutButton);
+        } else
+        {
+            Button back = createButton("Back", null);
+            applyHoverEffect(back);
+            back.setPrefSize(120, 50);
+            back.setOnAction(e -> showOptions(primaryStage));
+            topContainer.getChildren().add(back);
         }
-    }
 
-    searchBookTable.setItems(bookList);
+        VBox searchBookContainer = new VBox();
+        searchBookContainer.setSpacing(10);
+        searchBookContainer.setAlignment(Pos.CENTER);
+        searchBookContainer.setPadding(new Insets(20));
 
-    searchBookField.textProperty().addListener((observable, oldValue, newValue) -> {
-        ObservableList<Book> filteredList = FXCollections.observableArrayList();
-        for (Book book : bookList) {
-            if (book.getName().toLowerCase().contains(newValue.toLowerCase()) ||
-                    book.getAuthor().toLowerCase().contains(newValue.toLowerCase())) {
-                filteredList.add(book);
+        TextField searchBookField = new TextField();
+        searchBookField.setPromptText("Enter book name");
+        searchBookField.setMaxWidth(1100);
+        searchBookField.setPrefHeight(60);
+        searchBookField.getStyleClass().add("text-field");
+
+        TableView<Book> searchBookTable = new TableView<>();
+        searchBookTable.getStyleClass().add("table-view");
+
+        TableColumn<Book, String> searchBookNameColumn = new TableColumn<>("Book Name");
+        searchBookNameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+        searchBookNameColumn.setPrefWidth(350);
+
+        TableColumn<Book, String> searchAuthorNameColumn = new TableColumn<>("Author");
+        searchAuthorNameColumn.setCellValueFactory(new PropertyValueFactory<>("author"));
+        searchAuthorNameColumn.setPrefWidth(350);
+
+        TableColumn<Book, Integer> searchStockColumn = new TableColumn<>("Stock");
+        searchStockColumn.setCellValueFactory(new PropertyValueFactory<>("stock"));
+        searchStockColumn.setPrefWidth(100);
+
+        TableColumn<Book, String> searchCategoryColumn = new TableColumn<>("Book Category");
+        searchCategoryColumn.setCellValueFactory(new PropertyValueFactory<>("category"));
+        searchCategoryColumn.setPrefWidth(200);
+
+        TableColumn<Book, Double> searchPriceColumn = new TableColumn<>("Price");
+        searchPriceColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
+        searchPriceColumn.setPrefWidth(100);
+
+        searchBookTable.getColumns().addAll(searchBookNameColumn, searchAuthorNameColumn, searchCategoryColumn,
+                searchPriceColumn, searchStockColumn);
+
+        ObservableList<Book> bookList = FXCollections.observableArrayList();
+        ArrayList<String> books = FileManager.readFile(Constants.BOOKS_FILE_PATH);
+        for (String line : books)
+        {
+            if (admin || !line.contains(",0,"))
+            {
+                String[] bookDetails = line.split(",");
+                Book book = new Book(bookDetails[0], bookDetails[1], Double.parseDouble(bookDetails[2]),
+                        Integer.parseInt(bookDetails[3]), bookDetails[4]);
+                bookList.add(book);
             }
         }
-        searchBookTable.setItems(filteredList);
-    });
 
-    HBox searchBookButtonsContainer = new HBox();
-    searchBookButtonsContainer.setSpacing(20);
-    searchBookButtonsContainer.setAlignment(Pos.CENTER);
+        searchBookTable.setItems(bookList);
 
-    if (admin) {
-        Button addBookButton = new Button("Add New Book");
-        addBookButton.setPrefSize(150, 50);
-        applyHoverEffect(addBookButton);
-        addBookButton.setOnAction(e -> showBookInputDialog(null, bookList, searchBookTable));
-
-        Button editBookButton = new Button("Edit Book");
-        editBookButton.setPrefSize(150, 50);
-        applyHoverEffect(editBookButton);
-        editBookButton.setOnAction(e -> {
-            Book selectedBook = searchBookTable.getSelectionModel().getSelectedItem();
-            if (selectedBook != null) {
-                showBookInputDialog(selectedBook, bookList, searchBookTable);
-            } else {
-                showAlert("No Selection", "Please select a book to edit.");
+        searchBookField.textProperty().addListener((observable, oldValue, newValue) ->
+        {
+            ObservableList<Book> filteredList = FXCollections.observableArrayList();
+            for (Book book : bookList)
+            {
+                if (book.getName().toLowerCase().contains(newValue.toLowerCase()) ||
+                        book.getAuthor().toLowerCase().contains(newValue.toLowerCase()))
+                {
+                    filteredList.add(book);
+                }
             }
+            searchBookTable.setItems(filteredList);
         });
 
-        Button deleteBookButton = new Button("Delete Book");
-        deleteBookButton.setPrefSize(150, 50);
-        applyHoverEffect(deleteBookButton);
-        deleteBookButton.setOnAction(e -> {
-            Book selectedBook = searchBookTable.getSelectionModel().getSelectedItem();
-            if (selectedBook != null) {
-                bookList.remove(selectedBook);
-                ((Admin) user).deleteBook(selectedBook);
-            } else {
-                showAlert("No Selection", "Please select a book to delete.");
-            }
-        });
+        HBox searchBookButtonsContainer = new HBox();
+        searchBookButtonsContainer.setSpacing(20);
+        searchBookButtonsContainer.setAlignment(Pos.CENTER);
 
-        searchBookButtonsContainer.getChildren().addAll(addBookButton, editBookButton, deleteBookButton);
-    } else {
-        Button addBookToCartButton = new Button("Add to Cart");
-        addBookToCartButton.setPrefSize(150, 50);
-        applyHoverEffect(addBookToCartButton);
-        addBookToCartButton.setOnAction(arg0 -> {
-            Book book = searchBookTable.getSelectionModel().getSelectedItem();
-            if (book != null) {
-                ((Reader) user).getShoppingCart().addToCart(book);
+        if (admin)
+        {
+            Button addBookButton = new Button("Add New Book");
+            addBookButton.setPrefSize(150, 50);
+            applyHoverEffect(addBookButton);
+            addBookButton.setOnAction(e -> showBookInputDialog(null, bookList, searchBookTable));
 
-                Label confirmationLabel = new Label("The selected book has been added to your cart.");
-                confirmationLabel.setStyle("-fx-background-color: lightgreen; -fx-padding: 10px;");
-                searchBookContainer.getChildren().add(confirmationLabel);
+            Button editBookButton = new Button("Edit Book");
+            editBookButton.setPrefSize(150, 50);
+            applyHoverEffect(editBookButton);
+            editBookButton.setOnAction(e ->
+            {
+                Book selectedBook = searchBookTable.getSelectionModel().getSelectedItem();
+                if (selectedBook != null)
+                {
+                    showBookInputDialog(selectedBook, bookList, searchBookTable);
+                } else
+                {
+                    showAlert("No Selection", "Please select a book to edit.");
+                }
+            });
 
-                PauseTransition pause = new PauseTransition(Duration.seconds(2));
-                pause.setOnFinished(event -> searchBookContainer.getChildren().remove(confirmationLabel));
-                pause.play();
-            } else {
-                showAlert("No Selection", "Please select a book to add to cart.");
-            }
-        });
+            Button deleteBookButton = new Button("Delete Book");
+            deleteBookButton.setPrefSize(150, 50);
+            applyHoverEffect(deleteBookButton);
+            deleteBookButton.setOnAction(e ->
+            {
+                Book selectedBook = searchBookTable.getSelectionModel().getSelectedItem();
+                if (selectedBook != null)
+                {
+                    bookList.remove(selectedBook);
+                    ((Admin) user).deleteBook(selectedBook);
+                } else
+                {
+                    showAlert("No Selection", "Please select a book to delete.");
+                }
+            });
 
-        searchBookButtonsContainer.getChildren().add(addBookToCartButton);
+            searchBookButtonsContainer.getChildren().addAll(addBookButton, editBookButton, deleteBookButton);
+        } else
+        {
+            Button addBookToCartButton = new Button("Add to Cart");
+            addBookToCartButton.setPrefSize(150, 50);
+            applyHoverEffect(addBookToCartButton);
+            addBookToCartButton.setOnAction(arg0 ->
+            {
+                Book book = searchBookTable.getSelectionModel().getSelectedItem();
+                if (book != null)
+                {
+                    ((Reader) user).getShoppingCart().addToCart(book);
+
+                    Label confirmationLabel = new Label("The selected book has been added to your cart.");
+                    confirmationLabel.setStyle("-fx-background-color: lightgreen; -fx-padding: 10px;");
+                    searchBookContainer.getChildren().add(confirmationLabel);
+
+                    PauseTransition pause = new PauseTransition(Duration.seconds(2));
+                    pause.setOnFinished(event -> searchBookContainer.getChildren().remove(confirmationLabel));
+                    pause.play();
+                } else
+                {
+                    showAlert("No Selection", "Please select a book to add to cart.");
+                }
+            });
+
+            searchBookButtonsContainer.getChildren().add(addBookToCartButton);
+        }
+
+        searchBookContainer.getChildren().addAll(searchBookField, searchBookTable, searchBookButtonsContainer);
+
+        root.setTop(topContainer);
+        root.setCenter(searchBookContainer);
+
+        searchBookTable.setPrefHeight(600);
+        searchBookTable.setMaxWidth(1100);
     }
-
-    searchBookContainer.getChildren().addAll(searchBookField, searchBookTable, searchBookButtonsContainer);
-
-    root.setTop(topContainer);
-    root.setCenter(searchBookContainer);
-
-    searchBookTable.setPrefHeight(600);
-    searchBookTable.setMaxWidth(1100);
-}
-
 
     private void showBookInputDialog(Book book, ObservableList<Book> bookList, TableView<Book> tableView)
     {
@@ -769,8 +790,7 @@ private void showAllBooks(Stage primaryStage) {
             if (!addedBooks.isEmpty())
             {
                 showReceipt(primaryStage);
-            }
-            else
+            } else
             {
                 Alert alert = new Alert(AlertType.WARNING);
                 alert.setTitle("No books in cart");

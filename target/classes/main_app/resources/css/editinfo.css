@@ -22,7 +22,8 @@
 #login {
     -fx-font-size: 24px; /* Example: larger font size */
     -fx-text-fill: white; /* Example: text color */
-    -fx-font-weight: bold; /* Example: bold font */   
+    -fx-font-weight: bold; /* Example: bold font */ 
+    -fx-pref-width: 100;  
 }
 .form-container {
 	-fx-background-image: url("../media/cozy-home-interior-anime-style.jpg");
