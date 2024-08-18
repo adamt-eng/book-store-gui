@@ -1,0 +1,52 @@
+#style {
+	-fx-font-size: 50px; /* Set the font size */
+	-fx-font-weight:900;
+	-fx-padding:0,0,20,0;
+	-fx-text-fill: white; /* Make text color visible against the background */
+	-fx-alignment: center; /* Center the text within the label */
+	-fx-effect: dropshadow(gaussian, black, 10, 0, 0, 0); /* Add shadow effect */
+}
+
+
+.borderpane-style {
+	-fx-background-image: url("../media/cozy-home-interior-anime-style.jpg");
+	-fx-background-size: contain;  
+	-fx-background-size: stretch;
+    -fx-border-color: #333;        /* Set border color */
+    -fx-border-width: 2px;         /* Set border width */
+    -fx-padding: 10px;             /* Add padding inside the BorderPane */
+}
+
+
+
+#logout{
+	-fx-background-color:brown;
+	-fx-font-size: 20px;
+
+}
+#logout:hover{
+	-fx-background-color: sienna;
+}
+
+.center-button {
+	-fx-font-size:20px;
+	-fx-background-size: contain;  
+	-fx-background-size: stretch;
+    -fx-pref-width: 300px; /* Set the preferred width of the buttons */
+    -fx-pref-height: 400px; /* Set the preferred height of the buttons */
+    -fx-font-size: 55px; /* Set the font size of the buttons */
+    -fx-background-color:sienna ; /* Set the background color of the buttons */
+    -fx-text-fill: white; /* Set the text color */
+    -fx-background-radius: 10; /* Add rounded corners to the buttons */
+    -fx-cursor: hand; /* Change the cursor to a hand when hovering */
+}
+
+.center-button:hover {
+    -fx-background-color: #2980b9; /* Change the background color on hover */
+}
+#admin{
+	-fx-background-image: url("../media/medium-shot-senior-man-education-concept.jpg");
+}
+#reader{
+	-fx-background-image: url("../media/back-view-woman-choosing-book-from-shelf.jpg");
+}
