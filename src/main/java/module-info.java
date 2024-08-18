@@ -1,4 +1,5 @@
-module main_app {
+module main_app
+{
     requires javafx.controls;
     requires javafx.fxml;
 

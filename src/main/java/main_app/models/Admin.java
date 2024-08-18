@@ -14,8 +14,12 @@ public class Admin extends User implements AdminService
 
     public void addBook(Book book)
     {
-        FileManager.appendFile(Constants.BOOKS_FILE_PATH, book.getName() + "," + book.getAuthor() + "," + book.getPrice() + "," + book.getStock() + "," +
-        book.getCategory());
+        FileManager.appendFile(Constants.BOOKS_FILE_PATH,
+                book.getName() + "," +
+                        book.getAuthor() + "," +
+                        book.getPrice() + "," +
+                        book.getStock() + "," +
+                        book.getCategory());
     }
 
     public void editBook(Book book, Book updatedBook)
@@ -31,7 +35,11 @@ public class Admin extends User implements AdminService
             }
         }
         booksinfo.remove(i);
-        booksinfo.add(i, updatedBook.getName() + "," + updatedBook.getAuthor() + "," + updatedBook.getPrice() + "," + updatedBook.getStock() + "," + updatedBook.getCategory());
+        booksinfo.add(i, updatedBook.getName() + "," +
+                updatedBook.getAuthor() + "," +
+                updatedBook.getPrice() + "," +
+                updatedBook.getStock() + "," +
+                updatedBook.getCategory());
 
         FileManager.writeFile(Constants.BOOKS_FILE_PATH, booksinfo);
     }

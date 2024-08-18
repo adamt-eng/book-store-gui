@@ -26,7 +26,6 @@ public class Reader extends User
 
         this.previousOrders = new ArrayList<Order>();
         ArrayList<String> orders = FileManager.readFile(Constants.ORDERS_FILE_PATH);
-        
         for (int i = 0; i < orders.size(); i++)
         {
             String[] orderDetails = SecurityService.decrypt(orders.get(i)).split(",");
@@ -34,9 +33,13 @@ public class Reader extends User
             {
                 try
                 {
-                    this.previousOrders.add(new Order(Integer.parseInt(orderDetails[0]),
-                            new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", Locale.ENGLISH).parse(orderDetails[1]),
-                            this, Double.parseDouble(orderDetails[3])));
+                    this.previousOrders.add(
+                            new Order(
+                                    Integer.parseInt(orderDetails[0]),
+                                    new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", Locale.ENGLISH)
+                                            .parse(orderDetails[1]),
+                                    this,
+                                    Double.parseDouble(orderDetails[3])));
                 } catch (ParseException e)
                 {
                     e.printStackTrace();
@@ -121,8 +124,14 @@ public class Reader extends User
             }
         }
 
-        FileManager.appendFile(Constants.READERS_FILE_PATH, SecurityService.encrypt(email + "," + username + "," +
-                SecurityService.hash(password) + "," + phoneNumber + "," + address + "," + paymentMethod));
+        FileManager.appendFile(Constants.READERS_FILE_PATH,
+                SecurityService.encrypt(
+                        email + "," +
+                                username + "," +
+                                SecurityService.hash(password) + "," +
+                                phoneNumber + "," +
+                                address + "," +
+                                paymentMethod));
 
         return true;
     }

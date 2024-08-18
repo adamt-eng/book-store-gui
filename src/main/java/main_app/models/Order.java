@@ -78,11 +78,12 @@ public class Order
             }
         }
 
-        FileManager.appendFile(Constants.ORDERS_FILE_PATH, SecurityService.encrypt(this.orderID + "," + this.dateCreated + "," +
-                        this.reader.getEmail() + "," + this.total));
+        FileManager.appendFile(Constants.ORDERS_FILE_PATH, SecurityService.encrypt(
+                this.orderID + "," +
+                        this.dateCreated + "," +
+                        this.reader.getEmail() + "," +
+                        this.total));
 
         books.clear();
-
-        
     }
 }
