@@ -1,4 +1,23 @@
-# Online Book Store Management System
+# Book Store Management System (Phase 2)
+
+## Project Overview
+
+The Book Store Management System is an advanced application designed to facilitate online book shopping, catering to both **Admin** and **Reader** roles. This system has transitioned from a console-based application in [Phase 1](https://github.com/adamt-eng/book-store) to a full-fledged graphical user interface (GUI) in Phase 2.
+
+## Transition from Phase 1 to Phase 2
+
+In Phase 1, the core functionalities were developed as a console-based application. Phase 2 builds upon this foundation, introducing a user-friendly GUI, enhancing the user experience, and expanding the system's capabilities.
+
+This phase focuses on the following key enhancements:
+
+- **Graphical User Interface (GUI)**: The transition from a console-based application to a GUI allows for a more intuitive and visually appealing user experience.
+- **Improved User Management**: Streamlined account management for readers, including registration, profile updates, and order tracking.
+- **Enhanced Book Management**: Admins can now manage the book inventory through a visually guided interface, making tasks like adding, editing, and deleting books more straightforward.
+- **Secure Transactions**: The system continues to prioritize security, ensuring all sensitive information, including user data and order information, is securely handled.
+
+### Documentation Overview
+
+The documentation below outlines the features and functionalities of the final project.
 
 ## UML Diagram
 
