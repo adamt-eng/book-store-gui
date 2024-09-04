@@ -268,7 +268,7 @@ public class App extends Application
             {
                 root.getChildren().clear();
                 root.getStyleClass().add("borderpane-style");
-                resetScene("/main_app/resources/css/editinfo.css");
+                resetScene("/main_app/resources/css/common.css");
 
                 Label editInfoLabel = createLabel("Edit Information", "style");
 
@@ -335,7 +335,7 @@ public class App extends Application
             {
                 root.getChildren().clear();
                 root.getStyleClass().add("borderpane-style");
-                resetScene("/main_app/resources/css/previousorders.css");
+                resetScene("/main_app/resources/css/common.css");
 
                 VBox orderContainer = new VBox(10);
                 orderContainer.setAlignment(Pos.CENTER);
@@ -668,7 +668,7 @@ public class App extends Application
     {
         root.getChildren().clear();
         root.getStyleClass().add("borderpane-style");
-        resetScene("/main_app/resources/css/displaycart.css");
+        resetScene("/main_app/resources/css/common.css");
 
         VBox cartContainer = new VBox(10);
         cartContainer.setAlignment(Pos.CENTER);

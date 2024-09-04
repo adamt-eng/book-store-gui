@@ -1,9 +1,0 @@
-@import 'common.css';
-
-.form-container {
-    -fx-background-image: url("../media/cozy-home-interior-anime-style.jpg");
-    -fx-border-color: #cccccc;
-    -fx-border-width: 2px;
-    -fx-border-radius: 10px;
-    -fx-background-radius: 10px;
-}
