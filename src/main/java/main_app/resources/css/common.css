@@ -1,0 +1,70 @@
+/* Common Styles */
+#style {
+    -fx-font-size: 50px; 
+    -fx-font-weight: 900;
+    -fx-padding: 0, 0, 20, 0;
+    -fx-text-fill: white;
+    -fx-alignment: center;
+    -fx-effect: dropshadow(gaussian, black, 10, 0, 0, 0);
+}
+
+.borderpane-style {
+    -fx-background-image: url("../media/cozy-home-interior-anime-style.jpg");
+    -fx-background-size: stretch;
+    -fx-border-color: #333;
+    -fx-border-width: 2px;
+    -fx-padding: 10px;
+}
+
+.button {
+    -fx-padding: 0 20 0 20;
+    -fx-background-color: sienna;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+}
+
+.button:hover {
+    -fx-background-color: sienna;
+}
+
+.table-view {
+    -fx-background-color: sienna;
+    -fx-border-color: #ccc;
+    -fx-border-width: 1px;
+    -fx-border-radius: 5px;
+    -fx-padding: 10px;
+}
+
+.table-view .column-header {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+    -fx-alignment: center;
+}
+
+.table-view .cell {
+    -fx-font-size: 14px;
+    -fx-text-fill: white;
+}
+
+.table-view .table-row-cell:odd {
+    -fx-background-color: saddlebrown;
+}
+
+.table-view .table-row-cell:even {
+    -fx-background-color: sienna;
+}
+
+.text-field:focused, .password-field:focused {
+    -fx-border-color: brown;
+}
+
+.text-field {
+    -fx-background-color: white;
+    -fx-padding: 10px 15px;
+    -fx-border-radius: 25px;
+    -fx-background-radius: 25px;
+    -fx-font-size: 18px;
+    -fx-border-color: sienna;
+    -fx-border-width: 1px;
+}

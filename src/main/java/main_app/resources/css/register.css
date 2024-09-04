@@ -1,64 +1,18 @@
-#style {
-	-fx-font-size: 50px; /* Set the font size */
-	-fx-font-weight:900;
-	-fx-padding:0,0,20,0;
-	-fx-text-fill: white; /* Make text color visible against the background */
-	-fx-alignment: center; /* Center the text within the label */
-	-fx-effect: dropshadow(gaussian, black, 10, 0, 0, 0); /* Add shadow effect */
-}
+@import 'common.css';
 
 .top-background {
-	-fx-opacity: 0.7; /* Adjust the opacity level here (0.0 to 1.0) */
+    -fx-opacity: 0.7;
 }
 
-.borderpane-style {
-	-fx-background-image: url("../media/cozy-home-interior-anime-style.jpg");
-	-fx-background-size: contain;  
-	-fx-background-size: stretch;
-    -fx-border-color: #333;        /* Set border color */
-    -fx-border-width: 2px;         /* Set border width */
-    -fx-padding: 10px;             /* Add padding inside the BorderPane */
-}
 #login {
-    -fx-font-size: 24px; /* Example: larger font size */
-    -fx-text-fill: white; /* Example: text color */
-    -fx-font-weight: bold; /* Example: bold font */   
-}
-.form-container {
-	-fx-background-image: url("../media/cozy-home-interior-anime-style.jpg");
-	-fx-background-size: contain;  
-	-fx-background-size: stretch;
-    -fx-border-color: #cccccc;    /* Light grey border */
-    -fx-border-width: 2px;        /* Border width */
-    -fx-border-radius: 10px;       /* Rounded corners */
-    -fx-background-radius: 10px;   /* Rounded corners for the background */
-}
-
-.form-container label {
-    -fx-font-size: 14px;
+    -fx-font-size: 24px;
+    -fx-text-fill: white;
     -fx-font-weight: bold;
 }
 
-.form-container .text-field,
-.form-container .password-field {
-	   -fx-background-radius: 10; /* Radius for rounded corners */
-	   -fx-padding: 10; /* Optional: Add some padding inside the text fields */
-	   -fx-border-color: #ccc; /* Optional: Border color */
-	   -fx-border-radius: 10; /* Radius for the border to match rounded corners */
-	   -fx-border-width: 1; /* Optional: Border width */   
+.form-container {
+    -fx-background-image: url("../media/cozy-home-interior-anime-style.jpg");
+    -fx-border-color: #ccc;
+    -fx-border-width: 2px;
+    -fx-border-radius: 10px;
 }
-.text-field:focused, .password-field:focused {
-    -fx-border-color: brown; /* Change border color when focused */
-}
-
-.form-container .button {
-    -fx-padding: 0 20 0 20;
-    -fx-background-color: brown; /* Blue background for buttons */
-    -fx-text-fill: white;          /* White text for buttons */
-    -fx-font-size: 14px;
-}
-
-.form-container .button:hover {
-    -fx-background-color: sienna; /* Darker blue on hover */
-}
-

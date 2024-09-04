@@ -1,92 +1,15 @@
-#style {
-	-fx-font-size: 50px; /* Set the font size */
-	-fx-font-weight:900;
-	-fx-padding:0,0,20,0;
-	-fx-text-fill: white; /* Make text color visible against the background */
-	-fx-alignment: center; /* Center the text within the label */
-	-fx-effect: dropshadow(gaussian, black, 10, 0, 0, 0); /* Add shadow effect */
-}
-.borderpane-style {
-	-fx-background-image: url("../media/cozy-home-interior-anime-style.jpg");
-	-fx-background-size: contain;  
-	-fx-background-size: stretch;
-    -fx-border-color: #333;        /* Set border color */
-    -fx-border-width: 2px;         /* Set border width */
-    -fx-padding: 10px;             /* Add padding inside the BorderPane */
-}
-.table-view {
-    -fx-background-color: sienna;
-    -fx-border-color: #ccc;
-    -fx-border-width: 1px;
-    -fx-border-radius: 5px;
-    -fx-padding: 10px;
-   /* -fx-table-cell-border-color: transparent;*/
-}
+@import 'common.css';
 
-/* Style the TableColumn headers */
-.table-view .column-header-background {
-    -fx-background-color:sienna ;
-    -fx-padding: 5px;
-}
+/* Specific styles for the searchbook file */
 
-.table-view .column-header {
-    -fx-font-size: 14px;
-    -fx-font-weight: bold;
-    -fx-text-fill: white;
-    -fx-alignment: center;
-}
-
-/* Style the table rows */
-.table-view .cell {
-    -fx-font-size: 14px;
-    -fx-text-fill: white;
-}
-
-/* Style the even rows differently from the odd rows */
-.table-view .table-row-cell:odd {
-    -fx-background-color: saddlebrown;
-}
-
-.table-view .table-row-cell:even {
-    -fx-background-color: sienna;
-}
-
-/* Style the selected row */
-.table-view .table-row-cell:focused, .table-view .table-row-cell:selected {
-    -fx-background-color: #666;
-    -fx-text-fill: white;
-}
-
-/* Hide the vertical scroll bar */
-.table-view .scroll-bar:vertical {
-    -fx-opacity: 0;
-    -fx-max-width: 0px;
-}
-
-/* Hide the horizontal scroll bar */
-.table-view .scroll-bar:horizontal {
-    -fx-opacity: 0;
-    -fx-max-height: 0px;
-}
-.button{
-	-fx-padding: 0 20 0 20;
-    -fx-background-color: brown; /* Blue background for buttons */
-    -fx-text-fill: white;          /* White text for buttons */
-    -fx-font-size: 14px;
-}
-.button:hover {
-    -fx-background-color: sienna; /* Darker blue on hover */
-}
 .text-field {
     -fx-background-color: white;
     -fx-padding: 10px 15px;
     -fx-border-radius: 25px;
     -fx-background-radius: 25px;
     -fx-font-size: 18px;
-    -fx-border-color:sienna ;
+    -fx-border-color: sienna;
     -fx-border-width: 1px;
-    -fx-prompt-text-fill: #888;
-    -fx-text-fill: black;
 }
 
 .text-field:focused {
